@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image,} from "react-native";
-import {Link} from 'expo-router'
+import {Link} from 'expo-router';
 
 const style = StyleSheet.create({
     container: {
@@ -32,7 +32,7 @@ const style = StyleSheet.create({
     input: {
         height: 50,
         width: '100%',
-        borderColor: 'black',
+        borderColor: '#171716',
         borderWidth: 1,
         borderRadius: 10,
         paddingHorizontal: 15,
@@ -132,10 +132,10 @@ export default function SignUp() {
                     <Text style={style.botaotexto}>Entrar</Text>
                 </Pressable>
                 <View style={style.ViewLink}>
-                    <Text style={style.ViewTexto} >Não tem uma conta?</Text>
-                    <Link href='/app/cadastro'> 
-                     <Text style={style.TextoLink} >Crie uma</Text>
-                    </Link> 
+                    <Text style={style.ViewTexto}>Não tem uma conta?</Text>
+                    <Link href='/app/cadastro'>
+                        <Text style={style.TextoLink}>Crie uma</Text>
+                    </Link>
                 </View>
 
             </View>
