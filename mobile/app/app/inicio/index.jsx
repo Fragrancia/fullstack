@@ -2,11 +2,12 @@ import React from 'react';
 import { FlatList, View, Text, Pressable, StyleSheet, Image } from 'react-native';
 import { Link } from 'expo-router';
 
+
 const sonarize = () => {
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
-        <View style={styles.icon}>source={require('../img/logo.png')}</View>
+        <Image style={styles.icon} source={require('../img/logo.png')} />
         <Pressable style={styles.navBotao}>
           <Text style={styles.navTextoBotao}>Música</Text>
         </Pressable>
@@ -30,30 +31,31 @@ const sonarize = () => {
           </View>
         </View>
       </View>
-      
+
       <FlatList
-        data={musicas}
+        data={TopPlaylists}
         renderItem={Caixa}
+        horizontal
       />
     </View>
   );
 };
 
 const Caixa = ({ item }) => (
-  <View style={styles.item}>
-    <Link href={{ pathname: `/app/detalhe/${item.id}`, params: { 'musicas': JSON.stringify(item) } }}>
-      <Text style={styles.NomeMusica}>{item.nome}</Text>
-      <Image source={item.imagem} style={styles.imagem} />
+  <View style={styles.itemTopPlaylists}>
+    <Link href={{ pathname: `/app/detalhe/${item.id}`, params: { 'TopPlaylists': JSON.stringify(item) } }} asChild>
+      <View>
+        <Image source={item.imagem} style={styles.imagemTopPlaylists} />
+      </View>
     </Link>
   </View>
 );
 
-const musicas = [
-  { id: '1', nome: 'Funk', imagem: require('../img/boxmusica.png') },
-  { id: '2', nome: 'Rock', imagem: require('../img/boxmusica.png') },
-  { id: '2', nome: 'Sertanejo', imagem: require('../img/boxmusica.png') },
-  { id: '3', nome: 'Hiphop', imagem: require('../img/boxmusica.png') },
-  { id: '4', nome: 'Pop', imagem: require('../img/boxmusica.png') },
+const TopPlaylists = [
+  { id: '1', nome: 'Braba', imagem: require('../img/BRABA.png') },
+  { id: '2', nome: 'Rock', imagem: require('../img/ParadaRap.png') },
+  { id: '3', nome: 'Sertanejo', imagem: require('../img/PoesiaAcustica.png') },
+  { id: '4', nome: 'Hiphop', imagem: require('../img/TopSertanejo.png') },
 ];
 
 const styles = StyleSheet.create({
@@ -126,19 +128,19 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  item: {
-    backgroundColor: '#fff',
+  itemTopPlaylists: {
+    backgroundColor: '#e4e2dd',
     padding: 5,
     borderRadius: 5,
     marginBottom: 20,
   },
-  imagem: {
-    width: '100%',
+  imagemTopPlaylists: {
+    width: 100,
     height: 100,
     borderRadius: 10,
     marginBottom: 10,
   },
-  NomeMusica: {
+  NomeTopPlaylists: {
     fontSize: 20,
   },
 });

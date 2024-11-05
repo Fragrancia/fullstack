@@ -133,7 +133,7 @@ export default function SignUp() {
                 </Pressable>
                 <View style={style.ViewLink}>
                     <Text style={style.ViewTexto}>Não tem uma conta?</Text>
-                    <Link href='/app/cadastro'>
+                    <Link href='/inicio'>
                         <Text style={style.TextoLink}>Crie uma</Text>
                     </Link>
                 </View>
