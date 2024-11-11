@@ -1,11 +1,14 @@
 import React from 'react';
-import { FlatList, View, Text, Pressable, StyleSheet, Image } from 'react-native';
+import { FlatList, View, Text, Pressable, StyleSheet, Image, ImageBackground } from 'react-native';
 import { Link } from 'expo-router';
-
 
 const sonarize = () => {
   return (
+    
     <View style={styles.container}>
+      <View style={styles.BoxbackgroundImage}>
+      <ImageBackground source={require('../img/FundoPoze.png')} style={styles.backgroundImage}></ImageBackground>
+      </View>
       <View style={styles.navbar}>
         <Image style={styles.icon} source={require('../img/logo.png')} />
         <Pressable style={styles.navBotao}>
@@ -16,7 +19,7 @@ const sonarize = () => {
         </Pressable>
         <View style={styles.fotoperfil}></View>
       </View>
-
+      
       <View style={styles.artistas}>
         <Text style={styles.artistaTitulo}>Melhores artistas</Text>
         <View style={styles.boxartista}>
@@ -36,6 +39,8 @@ const sonarize = () => {
         data={TopPlaylists}
         renderItem={Caixa}
         horizontal
+        contentContainerStyle={styles.playlistContainer}
+        
       />
     </View>
   );
@@ -44,31 +49,41 @@ const sonarize = () => {
 const Caixa = ({ item }) => (
   <View style={styles.itemTopPlaylists}>
     <Link href={{ pathname: `/app/detalhe/${item.id}`, params: { 'TopPlaylists': JSON.stringify(item) } }} asChild>
-      <View>
+      <View style={styles.CardPlaylist}>
         <Image source={item.imagem} style={styles.imagemTopPlaylists} />
+        <Text style={styles.NomeTopPlaylists}>{item.nome}</Text>
+        <Text style={styles.descricaoTopPlaylists}>{item.artista}</Text>
       </View>
     </Link>
   </View>
 );
 
 const TopPlaylists = [
-  { id: '1', nome: 'Braba', imagem: require('../img/BRABA.png') },
-  { id: '2', nome: 'Rock', imagem: require('../img/ParadaRap.png') },
-  { id: '3', nome: 'Sertanejo', imagem: require('../img/PoesiaAcustica.png') },
-  { id: '4', nome: 'Hiphop', imagem: require('../img/TopSertanejo.png') },
+  { id: '1', nome: 'Braba', artista: 'Tuto, Joazinho da vt ...', imagem: require('../img/BRABA.png') },
+  { id: '2', nome: 'Parada Rap', artista: 'Racionais mcs, Dexter...', imagem: require('../img/ParadaRap.png') },
+  { id: '3', nome: 'Poesia Acústica', artista: 'Xamã, Mc Poze, ...', imagem: require('../img/PoesiaAcustica.png') },
+  { id: '4', nome: 'Top Sertanejo', artista: 'Marilia, Jorge e Mateus ...', imagem: require('../img/TopSertanejo.png') },
 ];
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#d6d6d4',
-    padding: 20,
+    padding: 0,
+  
+  },
+  backgroundImage: {
+    width: '100%'
+  },
+  BoxbackgroundImage: {
+
   },
   navbar: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 390,
+    padding: 19
   },
   icon: {
     width: 40,
@@ -95,7 +110,7 @@ const styles = StyleSheet.create({
   },
   artistas: {
     alignSelf: 'center',
-    width: '104%',
+    width: '95%',
     backgroundColor: '#e4e2dd',
     marginBottom: 50,
     borderRadius: 15,
@@ -107,7 +122,6 @@ const styles = StyleSheet.create({
   artistaTitulo: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -128,21 +142,43 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  playlistContainer: {
+    paddingVertical: 20,
+    
+  },
+  
   itemTopPlaylists: {
     backgroundColor: '#e4e2dd',
-    padding: 5,
-    borderRadius: 5,
-    marginBottom: 20,
+    padding: 10,
+    borderRadius: 10,
+    marginHorizontal: 10,
+    alignItems: 'center',
+    width: 170,
+    height: 200, 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 5,
+    
   },
   imagemTopPlaylists: {
-    width: 100,
-    height: 100,
+    width: 140, 
+    height: 140, 
     borderRadius: 10,
-    marginBottom: 10,
   },
   NomeTopPlaylists: {
-    fontSize: 20,
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    marginTop: 5,
+  },
+  descricaoTopPlaylists: {
+    fontSize: 12,
+    color: '#ccc',
+    textAlign: 'left',
   },
 });
 
 export default sonarize;
+
+
