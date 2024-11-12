@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image,} from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
-import {Link} from 'expo-router';
+import { Link } from 'expo-router';
 
 export default function UserProfile() {
   const [image, setImage] = useState(null);
   
-
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -21,36 +20,41 @@ export default function UserProfile() {
   };
 
   return (
-    <View style={styles.card}>
-    <View style={styles.container}>
-      <Text style={styles.title}>Perfil do Usuário</Text>
-      <Image 
-        source={image ? { uri: image } : require('../img/usuario.png')}
-        style={styles.image} 
-      />
-       <Pressable style={styles.botao} onPress={pickImage}>
-            <Text style={styles.botaotexto}>Trocar de Imagem</Text>
+    <SafeAreaView style={styles.Container}>
+      <View style={styles.card}>
+        <Text style={styles.titulo}>Perfil</Text>
+        
+        <Pressable onPress={pickImage}>
+          <Image 
+            source={image ? { uri: image } : require('../img/usuario.png')}
+            style={styles.imagem} 
+          />
         </Pressable>
 
-      <View style={styles.infoContainer}>
-        <Text style={styles.infoText}>Nome: </Text>
-        <Text style={styles.infoText}>Email:</Text>
-      </View>
-      <Pressable style={styles.botao} onPress={pickImage}>
-            <Text style={styles.botaotexto}>Salvar</Text>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoTexto}>Nome:</Text>
+          <Text style={styles.infoInput}>Arthur Jose Fraga</Text>
+          <Text style={styles.infoTexto}>Email:</Text>
+          <Text style={styles.infoInput}>arthurjosefraga@gmail.com</Text>
+          <Text style={styles.infoTexto}>Data de nasc.</Text>
+          <Text style={styles.infoInput}>05/11/2006</Text>
+        </View>
+
+        <Pressable style={styles.botaoSalvar}>
+          <Text style={styles.botaoSalvarTexto}>Salvar</Text>
         </Pressable>
-    </View>
-    </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  Container: {
     flex: 1,
-    backgroundColor: '#d6d6d4',
+    backgroundColor: '#f5f5f5',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    padding: 20,
   },
   card: {
     backgroundColor: '#e4e2dd',
@@ -64,34 +68,47 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     alignItems: 'center',
 },
-  title: {
-    fontSize: 28,
-    fontWeight: '600',
+  titulo: {
+    fontSize: 30,
+    fontWeight: 'bold',
     color: '#333',
     marginBottom: 20,
-  },
-  image: {
+  },  
+  imagem: {
     width: 150,
     height: 150,
     borderRadius: 75,
-    marginBottom: 20,
-    backgroundColor: '#ccc',
+    marginBottom: 10,
+    backgroundColor: '#dcdcdc',
   },
-  botao:{
+  infoContainer: {
+    width: '100%',
+    marginBottom: 20,
+  },
+  infoTexto: {
+    fontSize: 18,
+    color: '#333',
+    marginTop: 10,
+  },
+  infoInput: {
+    backgroundColor: '#f1f1f1',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 10,
+    marginTop: 5,
+    fontSize: 16,
+    color: '#333',
+  },
+  botaoSalvar: {
     backgroundColor: '#6141ac',
     borderRadius: 10,
     width: '100%',
     paddingVertical: 15,
     alignItems: 'center',
-    marginTop: 15,
   },
-  botaotexto: {
-    fontSize: 16,
-  },
-  infoContainer: {
-   
-  },
-  infoText: {
-   
+  botaoSalvarTexto: {
+    fontSize: 18,
+    color: '#ffffff',
+    fontWeight: '600',
   },
 });

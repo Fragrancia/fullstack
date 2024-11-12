@@ -67,7 +67,7 @@ const sonarize = () => {
 
 const CaixaLista = ({ item }) => (
   <View style={styles.itemParaVoce}>
-    <Link href={{ pathname: `/app/detalhe/${item.id}`, params: { 'TopPlaylists': JSON.stringify(item) } }} asChild>
+    <Link href='/Playlists'>
       <View style={styles.CardParaVoce}>
         <Image source={item.imagem} style={styles.imagemParaVoce} />
         <Text style={styles.NomeParaVoce}>{item.nome}</Text>
