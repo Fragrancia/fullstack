@@ -102,7 +102,7 @@ export default function SignUp() {
         if (!resposta) {
             console.log('erro');
         } else if (resposta.status === 200) {
-            console.log('Login foi bem sucedido');
+            console.log('Login foi bem sucdido');
         } else {
             console.log('ocorreu um erro');
         }

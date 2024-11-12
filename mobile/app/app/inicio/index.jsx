@@ -7,7 +7,9 @@ const sonarize = () => {
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
-        <Image style={styles.icon} source={require('../img/logo.png')} />
+
+      <Link href='/playlist'>
+        <Image style={styles.icon} source={require('../img/logo.png')} /></Link>
         
         <Pressable style={styles.navBotaoMusica}>
           <Text style={styles.navTextoBotaoMusica}>Música</Text>
@@ -58,7 +60,6 @@ const sonarize = () => {
           renderItem={CaixaPodCast}
           horizontal
           contentContainerStyle={styles.ContainerPodCast}>
-          
         </FlatList>
       </ScrollView>
     </View>
