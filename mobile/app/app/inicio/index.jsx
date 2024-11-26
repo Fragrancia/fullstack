@@ -68,7 +68,7 @@ const sonarize = () => {
 
 const CaixaLista = ({ item }) => (
   <View style={styles.itemParaVoce}>
-    <Link href='/Playlists'>
+    <Link href='/playlists'>
       <View style={styles.CardParaVoce}>
         <Image source={item.imagem} style={styles.imagemParaVoce} />
         <Text style={styles.NomeParaVoce}>{item.nome}</Text>

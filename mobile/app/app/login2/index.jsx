@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet, SafeAreaView, Image,} from "react-native";
-import {Link} from 'expo-router';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, Image } from "react-native";
+import { Link } from 'expo-router';
 
 const style = StyleSheet.create({
     container: {
@@ -28,7 +28,6 @@ const style = StyleSheet.create({
         color: '#333',
         marginBottom: 20,
     },
-    
     input: {
         height: 50,
         width: '100%',
@@ -45,25 +44,23 @@ const style = StyleSheet.create({
         backgroundColor: '#6141ac',
         borderRadius: 10,
         width: '100%',
+        height: 50,
         paddingVertical: 15,
+        paddingHorizontal: 150,
         alignItems: 'center',
         marginTop: 15,
     },
     botaotexto: {
-        color: 'e4e2dd',
+        color: '#e4e2dd',
         fontSize: 16,
         fontWeight: '600',
     },
-    img:{
-        width: 175,
-        height: 210,
-      borderRadius: 50,
-      marginBottom: 20,
-      alignSelf: 'center', 
-      width: 270, 
-      height: 270,
-      borderRadius: 12,
-      marginRight: 8,
+    img: {
+        width: 270,
+        height: 270,
+        borderRadius: 12,
+        marginBottom: 20,
+        alignSelf: 'center',
     },
     ViewLink: {
         flexDirection: 'row',
@@ -78,7 +75,6 @@ const style = StyleSheet.create({
         fontSize: 16,
         color: 'blue',
     },
-
 });
 
 export default function SignUp() {
@@ -102,7 +98,7 @@ export default function SignUp() {
         if (!resposta) {
             console.log('erro');
         } else if (resposta.status === 200) {
-            console.log('Login foi bem sucdido');
+            console.log('Login foi bem sucedido');
         } else {
             console.log('ocorreu um erro');
         }
@@ -111,8 +107,7 @@ export default function SignUp() {
     return (
         <SafeAreaView style={style.container}>
             <View style={style.card}>
-                
-                <Image style={style.img} source={require('./img/Fraga.png')}/>
+                <Image style={style.img} source={require('../img/Fraga.png')} />
 
                 <TextInput
                     style={style.input}
@@ -128,18 +123,19 @@ export default function SignUp() {
                     secureTextEntry={true}
                 />
 
-                <Pressable style={style.botao} onPress={registrarUsuario}>
-                    <Text style={style.botaotexto}>Entrar</Text>
-                </Pressable>
+                <Link href='/inicio'>
+                    <TouchableOpacity style={style.botao} onPress={registrarUsuario}>
+                        <Text style={style.botaotexto}>Entrar</Text>
+                    </TouchableOpacity>
+                </Link>
+
                 <View style={style.ViewLink}>
                     <Text style={style.ViewTexto}>Não tem uma conta?</Text>
-                    <Link href='/cadastro'>
+                    <Link href='/inicio'>
                         <Text style={style.TextoLink}>Crie uma</Text>
                     </Link>
                 </View>
-
             </View>
         </SafeAreaView>
     );
 }
-

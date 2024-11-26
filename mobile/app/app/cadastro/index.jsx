@@ -136,10 +136,10 @@ export default function SignUp() {
                         value={dataNascimento}
                         placeholder="Data de nascimento:"
                     />
-                   
+                   <Link href='/login2'>
                     <Pressable style={style.botao} onPress={registrarUsuario}>
                         <Text style={style.botaotexto}>Cadastrar</Text>
-                    </Pressable>
+                    </Pressable></Link>
                 </View>
             </View>
         </SafeAreaView>
